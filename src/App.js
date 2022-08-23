@@ -114,7 +114,7 @@ class App extends Component {
     }
   }
   onPress(index){
-    console.log(index)
+    this.setState( { selectedIndex : index , focusedIndex:index } );
   }
   render() {
     return (
