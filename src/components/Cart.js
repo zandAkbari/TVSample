@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import {Image, Pressable, Text, View} from "react-native";
-import EchoesLogo from './../images/Echoes.jpg';
+
 export const Cart = class Cart extends Component {
 
     render() {
 
-        const { styles } = this.props;
+        const { styles,itemData,onPress } = this.props;
         return (
             <View
 
                 style={[styles.cart]}
             >
-                <Pressable style={[styles.focusedCra]}>
+                <Pressable onPress={onPress} style={[styles.focusedCra]}>
                     <Image
-                        source={EchoesLogo}
+                        source={itemData.image}
                         style={[styles.logo]}
                     />
                 </Pressable>
                 <View>
-                    <Text style={styles.name}>test</Text>
+                    <Text style={styles.name}>{itemData.name}</Text>
                 </View>
 
             </View>
