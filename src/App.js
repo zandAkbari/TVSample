@@ -6,6 +6,7 @@ import {
   Platform,
   FlatList,
 } from 'react-native';
+import KeyEvent from 'react-native-keyevent';
 import { Cart } from "./components/Cart.js";
 import AlmaLogo from './images/Alma.jpg';
 import EchoesLogo from './images/Echoes.jpg';
@@ -18,6 +19,13 @@ class App extends Component {
     this.state = {
       data : [{"image":AlmaLogo,"name":"Alma"},{"image":EchoesLogo,"name":"Echoes"}]
     };
+  }
+  componentDidMount() {
+    KeyEvent.onKeyDownListener(keyEvent => {
+      //   console.log("111")
+      console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
+    })
+
   }
   onPress(index){
     console.log(index)
