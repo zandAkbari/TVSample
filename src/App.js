@@ -16,16 +16,101 @@ class App extends Component {
   constructor(props) {
 
     super(props);
+    // selectedIndex==-1 mean don't have any selected Item
+    // focusedIndex=0 mean first item is focused
     this.state = {
-      data : [{"image":AlmaLogo,"name":"Alma"},{"image":EchoesLogo,"name":"Echoes"}]
+      data : [{"image":AlmaLogo,"name":"Alma"},{"image":EchoesLogo,"name":"Echoes"}],
+      selectedIndex:-1,
+      focusedIndex:0
     };
   }
-  componentDidMount() {
-    KeyEvent.onKeyDownListener(keyEvent => {
-      //   console.log("111")
-      console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
+  deSelect() {
+    // remove selection
+    this.setState( { selectedIndex : -1 } );
+  }
+  selectItem(){
+    //chose focused item as a selected item
+    this.setState((curState)=>{
+      return{ selectedIndex:curState.focusedIndex}
     })
 
+
+  }
+  rightMovement(){
+
+    if(this.state.focusedIndex<this.state.data.length-1){
+      this.setState((curState)=>{
+        return{ focusedIndex:curState.focusedIndex+1}
+      })
+      this.deSelect()
+    }
+
+  }
+  leftMovement(){
+    if(this.state.focusedIndex>0){
+      this.setState((curState)=>{
+        return{ focusedIndex:curState.focusedIndex-1}
+      })
+      this.deSelect()
+    }
+  }
+  onPress(index){
+    this.setState( { selectedIndex : index , focusedIndex:index } );
+  }
+
+  componentDidMount() {
+    //console.log("start of componentDidMount")
+    KeyEvent.onKeyDownListener(keyEvent => {
+      //this section is for handling keypress in native apps
+
+      // console.log("start of keyEvent")
+     // console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
+      // console.log( `Action: ${ keyEvent.action }` );
+      // console.log( `Key: ${ keyEvent.pressedKey }` );
+      if (keyEvent.keyCode === 67 ) {
+        //Return Arrow key
+        this.deSelect()
+      }
+      if (keyEvent.keyCode === 66 || keyEvent.keyCode === 23) {
+        //REnter Arrow key
+        this.selectItem()
+      }
+      if (keyEvent.keyCode === 22 ) {
+        //Right Arrow key
+        this.rightMovement()
+
+      }
+      if (keyEvent.keyCode === 21 ) {
+        //Left Arrow key
+        this.leftMovement()
+
+      }
+
+    });
+    if(!isNative){
+      //this section is for handling keypress in web apps
+      document.addEventListener('keydown', (event)=>{
+            //console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
+
+            if(event.keyCode==39){
+              //Right Arrow key
+              this.rightMovement()
+            }else if(event.keyCode==37){
+              //Left Arrow key
+              this.leftMovement()
+            }else if(event.keyCode==8 || event.keyCode==10009){
+              //Return Arrow key
+              this.deSelect()
+
+            }else if(event.keyCode == 13 ){
+              //Enter Arrow key
+              this.selectItem()
+
+            }
+          }
+
+      )
+    }
   }
   onPress(index){
     console.log(index)
