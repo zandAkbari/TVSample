@@ -14,7 +14,7 @@ import {
   Linking,
 } from 'react-native';
 import logo from './logo.png';
-
+import { Cart } from "./components/Cart.js";
 const isNative = Platform.OS !== 'web';
 
 const App = () => {
@@ -45,10 +45,8 @@ const App = () => {
         style={styles.scrollView}
         contentContainerStyle={styles.scrollView}>
         <View style={styles.container}>
-          <Animated.Image
-            source={logo}
-            style={[styles.logo, {transform: [{rotate: spin}]}]}
-          />
+          <Cart styles={cartStyles} >
+          </Cart>
           <Text style={styles.title}>Create React Native Web App</Text>
           <Text style={styles.text}>
             Open up src/App.js to start working on your app!
@@ -130,5 +128,37 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+const cartStyles = StyleSheet.create({
+  cart:{
+    width:300,
+    height:500,
+    display:"flex",
+    flexDirection:"column",
+    borderWidth:8,borderColor:"transparent",position:"relative"
+  },
+  imageBox:{
+    borderColor:"transparent",borderWidth:8,
+  },
+  selectedCart:{
+    borderColor:"rgb(253, 193, 60)",borderWidth:8,
+  },
+  // rgb(253, 193, 60)
+  // rgb(238, 238, 238)
+  focusedCrat:{
+    borderColor:"rgb(238, 238, 238)",borderWidth:8,
+  },
+  logo: {
+    width: "100%",
+    height: 400,
+  },
+  name: {
+    color: 'rgb(253, 193, 60)',
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign:"center",
+    width:"100%",
+    padding:10
 
+  },
+});
 export default App;
