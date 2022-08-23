@@ -72,7 +72,8 @@ class App extends Component {
         this.deSelect()
       }
       if (keyEvent.keyCode === 66 || keyEvent.keyCode === 23) {
-        //REnter Arrow key
+        //Enter Arrow key
+       // console.log("gggggg")
         this.selectItem()
       }
       if (keyEvent.keyCode === 22 ) {
@@ -128,7 +129,7 @@ class App extends Component {
                   horizontal
                   data={ this.state.data }
                   renderItem={ ( { item, index } ) =>
-                      <Cart styles={cartStyles} onPress={()=>{this.onPress(index)}}  itemData={item} >
+                      <Cart styles={cartStyles} isFocused={this.state.focusedIndex==index} isSelected={this.state.selectedIndex==index} onPress={()=>{this.onPress(index)}}  itemData={item} >
 
                       </Cart>
                   }
