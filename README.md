@@ -1,29 +1,17 @@
-# This repository was initiated with create-react-native-web-app
+# This repository is a cross-platform app for TVs That was tested on Web and Tizen and AndroidTV
 
-[![NPM](https://nodei.co/npm/create-react-native-web-app.png)](https://npmjs.org/package/create-react-native-web-app)
 
-![GitHub issues](https://img.shields.io/github/issues/orYoffe/create-react-native-web-app.svg)
-![license](https://img.shields.io/github/license/orYoffe/create-react-native-web-app.svg)
-![GitHub top language](https://img.shields.io/github/languages/top/orYoffe/create-react-native-web-app.svg)
-![npm](https://img.shields.io/npm/v/create-react-native-web-app.svg)
 
-### A simple CLI tool to start your React Native Web project to develop same app for IOS Android and Web
 
-<p align="center" >
-<img width="300"  src="https://raw.githubusercontent.com/orYoffe/create-react-native-web-app/master/template/src/logo.png">
-</p>
+### This repository works on Web and Tizen and AndroidTV well however it may work on webOS and tvOS or need a tiny change to work on these platforms
 
-## Installation
+
+## Run
 
 ```sh
-# Run create-react-native-web-app <project-directory>
-$ npx create-react-native-web-app myApp
-
-# if you previously installed this package globaly run this command first to uninstall the previous version:
-# npm uninstall -g create-react-native-web-app
 
 # cd into your <project-directory>
-$ cd myApp
+$ cd TVSample
 
 # Run Web/Ios/Android development
 # Web
@@ -36,12 +24,26 @@ $ npm run ios
 $ npm run android
 
 ```
+## Build
 
-- To work with IOS and Android - Install Xcode and Android studio and follow the react native instructions [under the "Building Projects with Native Code" tab](http://facebook.github.io/react-native/docs/getting-started.html)
+```sh
+# Web
+$ npm run build
+# Copy the build folder and use from necessary files of it for creating Web or Tizen or webOS app
+$ open ./build
 
-<p align="center" >
-<img width="1000"  src="https://raw.githubusercontent.com/orYoffe/create-react-native-web-app/master/cli_preview.png">
-</p>
+# Android 
+# Run the build
+$ cd android && ./gradlew assembleRelease
+
+# Open apk folder to find the release apk
+$ open ./android/app/build/outputs/apk
+```
+
+- For web realize, the project was built assuming it is hosted at /.
+  You can control this with the homepage field in your package.json.
+
+
 
 ## Folder structure
 
