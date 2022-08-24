@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Image, Pressable, Text, View} from "react-native";
+import {Image, Pressable, Text, View,TouchableHighlight} from "react-native";
 
 export const Cart = class Cart extends Component {
 
@@ -11,7 +11,7 @@ export const Cart = class Cart extends Component {
 
                 style={[styles.cart]}
             >
-                <Pressable onPress={onPress}  style={[styles.imageBox,isFocused?styles.focusedCrat:'',isSelected?styles.selectedCart:'']}>
+                <Pressable  onPress={onPress}  style={[styles.imageBox,isFocused?styles.focusedCrat:'',isSelected?styles.selectedCart:'']}>
                     <Image
                         source={itemData.image}
                         style={[styles.logo]}

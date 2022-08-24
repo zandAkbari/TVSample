@@ -54,8 +54,17 @@ class App extends Component {
       this.deSelect()
     }
   }
-  onPress(index){
-    this.setState( { selectedIndex : index , focusedIndex:index } );
+  onPress(index,evt){
+// A strange way to fix a bug when click with the mouse on the left icon then go to the right by arrow key then press enter. you see a bug in the selected item.
+// I must fix this bug in a better way
+    if((evt.type=="click" && !isNative)||(isNative && evt.dispatchConfig && evt.dispatchConfig.registrationName!="onClick")){
+
+      this.setState( { selectedIndex : index , focusedIndex:index } );
+
+    }else{
+      this.selectItem()
+    }
+
   }
 
   componentDidMount() {
@@ -64,10 +73,10 @@ class App extends Component {
       //this section is for handling keypress in native apps
 
       // console.log("start of keyEvent")
-     // console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
+  console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
       // console.log( `Action: ${ keyEvent.action }` );
       // console.log( `Key: ${ keyEvent.pressedKey }` );
-      if (keyEvent.keyCode === 67 ) {
+      if (keyEvent.keyCode === 67 || keyEvent.keyCode === 4 ) {
         //Return Arrow key
         this.deSelect()
       }
@@ -91,7 +100,7 @@ class App extends Component {
     if(!isNative){
       //this section is for handling keypress in web apps
       document.addEventListener('keydown', (event)=>{
-            //console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
+       //   console.log(`Key: ${event.key} with keycode ${event.keyCode} has been pressed`);
 
             if(event.keyCode==39){
               //Right Arrow key
@@ -113,9 +122,7 @@ class App extends Component {
       )
     }
   }
-  onPress(index){
-    this.setState( { selectedIndex : index , focusedIndex:index } );
-  }
+
   render() {
     return (
         <ScrollView
@@ -129,7 +136,7 @@ class App extends Component {
                   horizontal
                   data={ this.state.data }
                   renderItem={ ( { item, index } ) =>
-                      <Cart styles={cartStyles} isFocused={this.state.focusedIndex==index} isSelected={this.state.selectedIndex==index} onPress={()=>{this.onPress(index)}}  itemData={item} >
+                      <Cart styles={cartStyles} isFocused={this.state.focusedIndex==index} isSelected={this.state.selectedIndex==index} onPress={(evt)=>{this.onPress(index,evt)}}  itemData={item} >
 
                       </Cart>
                   }
