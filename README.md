@@ -4,7 +4,7 @@
 
 
 ### This repository works on Web and Tizen and AndroidTV well however it may work on webOS and tvOS well or need a tiny change to work on these platforms 
-###I didn't have TVs or simulators of webOS and tvOS to test them
+### I didn't have TVs or simulators of webOS and tvOS to test them
 
 - To work with the project pull the git repository then install node module
 ## Run
