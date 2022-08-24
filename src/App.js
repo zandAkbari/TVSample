@@ -54,16 +54,35 @@ class App extends Component {
       this.deSelect()
     }
   }
+  disableAllTabIndex(){
+    //remove all tabIndex attributes to fix bugs of a mouse click on the web
+    try {
+      let order = document.querySelectorAll("div[tabindex='0']");
+
+      order.forEach((item)=>{
+        // console.log("item",item.tabIndex)
+        item.removeAttribute('tabIndex')
+      })
+    }
+    catch(err) {
+
+    }
+
+  }
   onPress(index,evt){
 // A strange way to fix a bug when click with the mouse on the left icon then go to the right by arrow key then press enter. you see a bug in the selected item.
 // I must fix this bug in a better way
-    if((evt.type=="click" && !isNative)||(isNative && evt.dispatchConfig && evt.dispatchConfig.registrationName!="onClick")){
+
+   // if((evt.type=="click" && !isNative)||(isNative && evt.dispatchConfig && evt.dispatchConfig.registrationName!="onClick")){
 
       this.setState( { selectedIndex : index , focusedIndex:index } );
 
-    }else{
-      this.selectItem()
-    }
+    // }else{
+    //   this.selectItem()
+    // }
+  if(!isNative){
+    this.disableAllTabIndex()
+  }
 
   }
 

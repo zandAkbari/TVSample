@@ -11,7 +11,7 @@ export const Cart = class Cart extends Component {
 
                 style={[styles.cart]}
             >
-                <Pressable  onPress={onPress}  style={[styles.imageBox,isFocused?styles.focusedCrat:'',isSelected?styles.selectedCart:'']}>
+                <Pressable  onPress={onPress}    style={[styles.imageBox,isFocused?styles.focusedCrat:'',isSelected?styles.selectedCart:'']}>
                     <Image
                         source={itemData.image}
                         style={[styles.logo]}
