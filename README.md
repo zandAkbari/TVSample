@@ -43,6 +43,16 @@ $ open ./android/app/build/outputs/apk
 
 - For web realize, the project was built assuming it is hosted at /.
   You can control this with the homepage field in your package.json.
+### you can see videos from different devices that were recorded
+
+- [Android Emulator](https://www.youtube.com/watch?v=00TxDGdiy4w)
+- [Android TV](https://www.youtube.com/watch?v=GzY0k2qKgH0)
+- [Google Chrome](https://www.youtube.com/watch?v=t06LEsJbn-s)
+- [Internet Explorer](https://www.youtube.com/watch?v=90KrLfG3ZP4)
+- [Samsong Emulator](https://www.youtube.com/watch?v=cjrksmcYTrU)
+- [Samsung TV](https://www.youtube.com/watch?v=qqyAhi2IV-0)
+
+
 
 
 
