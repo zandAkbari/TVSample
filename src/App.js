@@ -73,13 +73,13 @@ class App extends Component {
 // A strange way to fix a bug when click with the mouse on the left icon then go to the right by arrow key then press enter. you see a bug in the selected item.
 // I must fix this bug in a better way
 
-   // if((evt.type=="click" && !isNative)||(isNative && evt.dispatchConfig && evt.dispatchConfig.registrationName!="onClick")){
+   if((evt.type=="click" && !isNative)||(isNative && evt.dispatchConfig && evt.dispatchConfig.registrationName!="onClick")){
 
       this.setState( { selectedIndex : index , focusedIndex:index } );
 
-    // }else{
-    //   this.selectItem()
-    // }
+    }else{
+      this.selectItem()
+    }
   if(!isNative){
     this.disableAllTabIndex()
   }
@@ -92,7 +92,7 @@ class App extends Component {
       //this section is for handling keypress in native apps
 
       // console.log("start of keyEvent")
-  console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
+  //console.log(`onKeyDown keyCode: ${keyEvent.keyCode}`);
       // console.log( `Action: ${ keyEvent.action }` );
       // console.log( `Key: ${ keyEvent.pressedKey }` );
       if (keyEvent.keyCode === 67 || keyEvent.keyCode === 4 ) {
